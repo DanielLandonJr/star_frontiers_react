@@ -1,3 +1,36 @@
+# Star Frontiers
+
+All rights belong to Wizards of the Coast. This is a demonstration application for educational purposes only. The data/rules belong to them the code belongs to me.
+
+Star Frontiers was a RPG realsed back in the 80's by TSR (the makers of Dungeons & Dragons). It is a futuristic RPG where you could play different races and explore the galaxay (as small as it was).
+
+The ruleset was broken into two seperate parts. Alpha Dawn was the rules for character creation and general game play. Knight Hawks was the rules for creating and using space ships.
+
+This application will attempt to reproduce those rulesets. The development has been broken into several stages;
+
+- Stage 1. (Must Have) Duplicate the data for Knight Hawks. This data will be saved in a FireBase/Store database. Full C.R.U.D. will be implemented for the data. In addition this stage will meet all requirement for the Code Louisville React course (Sept 2018).
+- Stage 2. (Should Have) Add the rule set necessary to allow a user to generate a ship.
+- Stage 3. (Would Like To Have) Authentication.
+  - A. Basic user authentication.
+  - B. Users should be able to modifiy data that they enter...personal storage of sorts. The user will have access to the default data as well as anything that they create for themselves (this will include custom ships). The default data will be locked down, only admin user will be able to modify that data.
+- Stage 4. (Feature Creep) Repeat stages 1 & 2 for the Alpha Dawn data and rule set.
+
+I would like to see this completed for both rulesets but that will take time to sort out. Eventually I would like to do this application in Angular, VUE and NativeScript. 
+
+I also want to include TypeScript in the application. Currently I am working my way around doing this...however it is a bit more complicated than what I expected.
+
+## Running the Application
+
+Once Stage 1 is completed the application will be hosted. To acces the app just go to the appropriate link (once supplied).
+
+## Install
+
+As usual
+
+`npm install` and enjoy.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>
