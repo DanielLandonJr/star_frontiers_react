@@ -1,3 +1,5 @@
+// 404 page for things not found
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import CancelIcon from '@material-ui/icons/Cancel';

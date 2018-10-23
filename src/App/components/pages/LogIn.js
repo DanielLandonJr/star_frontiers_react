@@ -1,3 +1,5 @@
+// this is mostly boiler plate code from material-ui for a logon screen
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import LockIcon from '@material-ui/icons/LockOutlined';
@@ -95,7 +97,8 @@ function SignIn(props) {
               label="Remember me"
             />
             <Typography>
-              Stage 1: Authentication disabled. Select button below to continue.
+              Stage 1: Authentication disabled until Stage 4. Click button to
+              continue.
             </Typography>
             <Button
               type="submit"
@@ -104,7 +107,7 @@ function SignIn(props) {
               color="primary"
               className={classes.submit}
               component={Link}
-              to="selection"
+              to="home"
             >
               Sign in
             </Button>
