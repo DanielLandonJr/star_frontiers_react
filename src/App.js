@@ -8,7 +8,7 @@ import { Provider } from './App/data/Context';
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
 import { purple, green } from '@material-ui/core/colors';
 
-import SignIn from './App/components/helpers/LogIn';
+import SignIn from './App/components/pages/LogIn';
 import NotFound from './App/components/pages/NotFound';
 import Home from './App/components/pages/Home';
 import KnightHawksDashboard from './App/components/knightHawks/Dashboard';
@@ -18,7 +18,7 @@ const theme = createMuiTheme({
   palette: {
     primary: purple,
     secondary: green,
-    type: 'dark'
+    type: 'light'
   },
   typography: {
     useNextVariants: true
