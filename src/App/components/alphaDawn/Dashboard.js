@@ -4,7 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { CssBaseline, withStyles, Typography } from '@material-ui/core';
-import { Drawer, AppBar, Toolbar } from '@material-ui/core';
+import { Drawer, AppBar, Toolbar, Paper } from '@material-ui/core';
 import { Divider, IconButton } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
@@ -81,7 +81,7 @@ const styles = theme => ({
   appBarSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
-    padding: theme.spacing.unit * 2.4,
+    padding: theme.spacing.unit,
     height: '100vh',
     overflow: 'auto'
   },
@@ -93,6 +93,9 @@ const styles = theme => ({
   },
   h5: {
     marginBottom: theme.spacing.unit * 1.6
+  },
+  paperContent: {
+    padding: theme.spacing.unit
   }
 });
 
@@ -176,10 +179,14 @@ class Dashboard extends React.Component {
                 </Drawer>
                 <main className={classes.content}>
                   <div className={classes.appBarSpacer} />
-                  {/* which component is showing...based on value from state */}
-                  {value.ad_showing.charactersIsShowing ? <Characters /> : null}
-                  {value.ad_showing.warehouseIsShowing ? <Warehouse /> : null}
-                  {value.ad_showing.aboutIsShowing ? <About /> : null}
+                  <Paper className={classes.paperContent}>
+                    {/* which component is showing...based on value from state */}
+                    {value.ad_showing.charactersIsShowing ? (
+                      <Characters />
+                    ) : null}
+                    {value.ad_showing.warehouseIsShowing ? <Warehouse /> : null}
+                    {value.ad_showing.aboutIsShowing ? <About /> : null}
+                  </Paper>
                 </main>
               </div>
             </React.Fragment>

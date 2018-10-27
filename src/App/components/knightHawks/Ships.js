@@ -6,8 +6,6 @@ import { Consumer } from '../../data/Context';
 // import * as Actions from '../../data/Actions';
 import Ship from './Ship';
 
-import Users from '../../data/Users';
-
 const styles = theme => {};
 
 class Ships extends Component {
@@ -18,9 +16,8 @@ class Ships extends Component {
           return (
             <React.Fragment>
               <CssBaseline />
-              <Typography variant="h3">Ships, List Component</Typography>
+              <Typography variant="h3">Ships</Typography>
               <Ship />
-              <Users />
             </React.Fragment>
           );
         }}
