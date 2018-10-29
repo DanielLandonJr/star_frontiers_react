@@ -2,7 +2,7 @@
 
 import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
-import { Provider } from './App/data/Context';
+import { Provider, Consumer } from './App/data/Context';
 
 // theme changes
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core';
@@ -28,32 +28,36 @@ const theme = createMuiTheme({
   }
 });
 
-console.log(theme);
-
 class App extends Component {
   render() {
     return (
       <Provider>
         <MuiThemeProvider theme={theme}>
           <BrowserRouter>
-            <React.Fragment>
-              <Switch>
-                <Route exact path="/" component={SignIn} />
-                <Route exact path="/home" component={Home} />
-                <Route
-                  exact
-                  path="/knighthawks/dashboard"
-                  component={KnightHawksDashboard}
-                />
-                <Route
-                  exact
-                  path="/alphadawn/dashboard"
-                  component={AlphaDawnDashboard}
-                />
-                {/* 404 */}
-                <Route component={NotFound} />
-              </Switch>
-            </React.Fragment>
+            <Consumer>
+              {value => {
+                return (
+                  <React.Fragment>
+                    <Switch>
+                      <Route exact path="/" component={SignIn} />
+                      <Route exact path="/home" component={Home} />
+                      <Route
+                        exact
+                        path="/knighthawks/dashboard"
+                        component={KnightHawksDashboard}
+                      />
+                      <Route
+                        exact
+                        path="/alphadawn/dashboard"
+                        component={AlphaDawnDashboard}
+                      />
+                      {/* 404 */}
+                      <Route component={NotFound} />
+                    </Switch>
+                  </React.Fragment>
+                );
+              }}
+            </Consumer>
           </BrowserRouter>
         </MuiThemeProvider>
       </Provider>

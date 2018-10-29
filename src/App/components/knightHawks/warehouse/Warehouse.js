@@ -6,7 +6,6 @@ import { CssBaseline, withStyles } from '@material-ui/core';
 import { Typography, Grid, Paper } from '@material-ui/core';
 import { Select, MenuItem, FormControl, Input } from '@material-ui/core';
 import { Consumer } from '../../../data/Context';
-// import * as Actions from '../../data/Actions';
 
 import Hulls from './Hulls';
 import ConstructionCenters from './ConstructionCenters';
@@ -22,7 +21,8 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
-    marginBottom: theme.spacing.unit
+    marginBottom: theme.spacing.unit,
+    background: theme.palette.primary.main
   }
 });
 
@@ -71,7 +71,7 @@ class Warehouse extends Component {
                 </Grid>
                 <Grid item xs={12}>
                   {this.state.showing === '' ? (
-                    <Typography variant="h4">
+                    <Typography variant="h6">
                       Select a componet from the list above.
                     </Typography>
                   ) : null}

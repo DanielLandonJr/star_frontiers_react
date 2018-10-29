@@ -3,7 +3,6 @@
 import React, { Component } from 'react';
 import { CssBaseline, withStyles } from '@material-ui/core';
 import { Consumer } from '../../data/Context';
-// import * as Actions from '../../data/Actions';
 
 const styles = theme => {};
 
