@@ -118,4 +118,4 @@ SignIn.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(SignIn);
+export default withStyles(styles, { withTheme: true })(SignIn);

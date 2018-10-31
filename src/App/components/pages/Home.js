@@ -100,4 +100,4 @@ Selection.prototype = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Selection);
+export default withStyles(styles, { withTheme: true })(Selection);

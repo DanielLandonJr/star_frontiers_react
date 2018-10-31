@@ -13,7 +13,7 @@ import { Consumer } from '../../data/Context';
 import { Link } from 'react-router-dom';
 
 const styles = theme => ({
-  divider: {
+  secondaryDark: {
     background: theme.palette.secondary.dark
   },
   popover: {
@@ -26,8 +26,8 @@ const styles = theme => ({
 
 class ListItems extends React.Component {
   state = {
-    // used to show which item is currently selected
-    selectedIndex: 1
+    // used to show which item is currently selected, default to about
+    selectedIndex: 3
   };
 
   // update state to show which item is currently selected
@@ -49,6 +49,8 @@ class ListItems extends React.Component {
           return (
             <React.Fragment>
               <CssBaseline />
+
+              <Divider className={classes.secondaryDark} />
               <List>
                 <ListItem
                   button
@@ -63,7 +65,7 @@ class ListItems extends React.Component {
                 </ListItem>
               </List>
 
-              <Divider className={classes.divider} />
+              <Divider className={classes.secondaryDark} />
 
               <List>
                 <ListItem
@@ -97,7 +99,7 @@ class ListItems extends React.Component {
                 </ListItem>
               </List>
 
-              <Divider className={classes.divider} />
+              <Divider className={classes.secondaryDark} />
 
               <List component="nav">
                 <ListItem
@@ -128,4 +130,4 @@ ListItems.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(ListItems);
+export default withStyles(styles, { withTheme: true })(ListItems);

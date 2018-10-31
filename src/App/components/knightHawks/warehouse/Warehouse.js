@@ -6,9 +6,9 @@ import { CssBaseline, withStyles } from '@material-ui/core';
 import { Typography, Grid, Paper } from '@material-ui/core';
 import { Select, MenuItem, FormControl, Input } from '@material-ui/core';
 import { Consumer } from '../../../data/Context';
-
 import Hulls from './Hulls';
 import ConstructionCenters from './ConstructionCenters';
+import Ships from '../Ships';
 
 const styles = theme => ({
   container: {
@@ -21,8 +21,10 @@ const styles = theme => ({
     textAlign: 'center',
     color: theme.palette.text.secondary,
     whiteSpace: 'nowrap',
-    marginBottom: theme.spacing.unit,
-    background: theme.palette.primary.main
+    marginBottom: theme.spacing.unit
+  },
+  secondaryDark: {
+    color: theme.palette.secondary.dark
   }
 });
 
@@ -50,7 +52,9 @@ class Warehouse extends Component {
                     <FormControl>
                       <Paper className={classes.paper}>
                         <FormControl className={classes.formControl}>
-                          <Typography>Warehouse List</Typography>
+                          <Typography className={classes.secondaryDark}>
+                            Warehouse List
+                          </Typography>
                           <Select
                             value={this.state.showing}
                             onChange={this.handleChange}
@@ -75,6 +79,7 @@ class Warehouse extends Component {
                       Select a componet from the list above.
                     </Typography>
                   ) : null}
+                  {this.state.showing === 'ships' ? <Ships /> : null}
                   {this.state.showing === 'hulls' ? <Hulls /> : null}
                   {this.state.showing === 'constructionCenters' ? (
                     <ConstructionCenters />
@@ -93,4 +98,4 @@ Warehouse.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Warehouse);
+export default withStyles(styles, { withTheme: true })(Warehouse);

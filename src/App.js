@@ -28,6 +28,8 @@ const theme = createMuiTheme({
   }
 });
 
+console.log(theme);
+
 class App extends Component {
   render() {
     return (

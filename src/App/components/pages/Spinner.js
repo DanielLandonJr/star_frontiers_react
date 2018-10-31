@@ -42,4 +42,4 @@ Spinner.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Spinner);
+export default withStyles(styles, { withTheme: true })(Spinner);

@@ -80,4 +80,4 @@ NotFound.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(NotFound);
+export default withStyles(styles, { withTheme: true })(NotFound);
