@@ -6,6 +6,7 @@ import React, { Component } from 'react';
 import Reducer from './Reducer';
 import * as ActionsList from './Actions';
 import FireBaseObject from './Firebase';
+import CollectionList from './Collections';
 
 const Context = React.createContext(undefined);
 
@@ -36,3 +37,4 @@ export class Provider extends Component {
 export const Consumer = Context.Consumer;
 export const Actions = ActionsList;
 export const firebase = FireBaseObject;
+export const Collections = CollectionList;

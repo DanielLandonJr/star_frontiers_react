@@ -4,19 +4,15 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import LockIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-router-dom';
+import { CssBaseline, withStyles } from '@material-ui/core';
 import {
   Avatar,
   Button,
-  CssBaseline,
   FormControl,
-  FormControlLabel,
-  Checkbox,
-  Input,
-  InputLabel,
-  Paper,
-  Typography,
-  withStyles
+  FormControlLabel
 } from '@material-ui/core';
+import { Checkbox, Input, InputLabel, Paper } from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 
 const styles = theme => ({
   layout: {

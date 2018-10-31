@@ -1,22 +1,18 @@
 // ships Component...a list of ship items
 
-import React, { Component } from 'react';
-import { CssBaseline, withStyles, Typography } from '@material-ui/core';
+import React from 'react';
 import { Consumer } from '../../data/Context';
-// import * as Actions from '../../data/Actions';
 import Ship from './Ship';
 
-const styles = theme => {};
-
-class Ships extends Component {
+class Ships extends React.Component {
   render() {
     return (
       <Consumer>
         {value => {
           return (
             <React.Fragment>
-              <CssBaseline />
-              <Typography variant="h3">Ships</Typography>
+              {/* <CssBaseline /> */}
+              {/* <Typography variant="h3">Ships</Typography> */}
               <Ship />
             </React.Fragment>
           );
@@ -26,4 +22,4 @@ class Ships extends Component {
   }
 }
 
-export default withStyles(styles)(Ships);
+export default Ships;

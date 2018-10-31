@@ -3,9 +3,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
-import { CssBaseline, withStyles, Typography } from '@material-ui/core';
+import { CssBaseline, withStyles } from '@material-ui/core';
 import { Drawer, AppBar, Toolbar, Paper } from '@material-ui/core';
-import { IconButton } from '@material-ui/core';
+import { IconButton, Typography } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ListItems from './ListItems';

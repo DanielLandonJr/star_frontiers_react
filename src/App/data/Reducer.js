@@ -1,14 +1,9 @@
 // the reducer does the actual changing of the state based on what is passed to it from dsiaptch in AudioContext.js
 
-import * as Actions from './Actions';
+import { Actions } from './Context';
 
 const Reducer = (state, action) => {
   switch (action.type) {
-    case Actions.STATE_CHANGE_KH_SHOWING:
-      return {
-        ...state,
-        kh_showing: action.payload
-      };
     case Actions.STATE_CHANGE_AD_SHOWING:
       return {
         ...state,

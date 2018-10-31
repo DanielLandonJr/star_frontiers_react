@@ -3,14 +3,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import {
-  CssBaseline,
-  withStyles,
-  Grid,
-  Typography,
-  Paper,
-  Button
-} from '@material-ui/core';
+import { CssBaseline, withStyles } from '@material-ui/core';
+import { Grid, Typography, Paper, Button } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
