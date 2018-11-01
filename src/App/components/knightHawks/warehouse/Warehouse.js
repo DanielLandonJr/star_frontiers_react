@@ -30,7 +30,7 @@ const styles = theme => ({
 
 class Warehouse extends Component {
   state = {
-    showing: ''
+    showing: 'hulls'
   };
 
   handleChange = event => {

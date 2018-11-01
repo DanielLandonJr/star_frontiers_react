@@ -19,7 +19,7 @@ class Dashboard extends React.Component {
   state = {
     open: true,
     // what is showing, default to about
-    showing: 'about'
+    showing: 'warehouse'
   };
 
   handleDrawerOpen = () => {

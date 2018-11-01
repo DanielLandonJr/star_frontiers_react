@@ -7,6 +7,7 @@ import Reducer from './Reducer';
 import * as ActionsList from './Actions';
 import FireBaseObject from './Firebase';
 import CollectionList from './Collections';
+import bcrypt from 'bcryptjs';
 
 const Context = React.createContext(undefined);
 
@@ -19,9 +20,16 @@ export class Provider extends Component {
       warehouseIsShowing: false,
       aboutIsShowing: false
     },
+    generatedHash: '',
     // dispatch is used to update the state
     dispatch: action => {
       this.setState(state => Reducer(state, action));
+    },
+    generateHash: whatToHash => {
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(whatToHash, salt);
+
+      return hash;
     }
   };
 

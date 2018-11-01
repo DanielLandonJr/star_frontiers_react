@@ -25,6 +25,15 @@ const theme = createMuiTheme({
   },
   spacing: {
     unit: 10
+  },
+  breakpoints: {
+    // values: {
+    //   xs: 0,
+    //   sm: 500,
+    //   md: 960,
+    //   lg: 1280,
+    //   xl: 1920
+    // }
   }
 });
 

@@ -1,4 +1,4 @@
-const drawerWidth = 240;
+const drawerWidth = 250;
 
 const styles = theme => ({
   root: {
@@ -34,8 +34,10 @@ const styles = theme => ({
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen
-    }),
-    height: '100vh'
+    })
+
+    // ,
+    // height: '100vh'
   },
   drawerPaperClose: {
     overflowX: 'hidden',
@@ -58,6 +60,8 @@ const styles = theme => ({
   content: {
     flexGrow: 1,
     padding: theme.spacing.unit * 2.4
+    // ,
+    // minWidth: theme.spacing.unit * 40
   },
   brand: {
     color: theme.palette.secondary.dark
