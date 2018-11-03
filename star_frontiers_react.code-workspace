@@ -6,7 +6,6 @@
   ],
   "settings": {
     "terminal.integrated.shell.windows": "C:\\Program Files\\Git\\bin\\bash.exe",
-    "editor.fontSize": 18,
     "editor.formatOnSave": true,
     "editor.tabSize": 2
   }

@@ -18,7 +18,7 @@ function CreatedInformation(props) {
         {/* create name/date */}
         <Grid item xs={12} sm={6}>
           <Tooltip title="Date Created" placement="top-start">
-            <Typography variant="caption">
+            <Typography variant="caption" gutterBottom>
               created on: {props.createdOn}
             </Typography>
           </Tooltip>
@@ -31,7 +31,7 @@ function CreatedInformation(props) {
         {/* modify name/date */}
         <Grid item xs={12} sm={6}>
           <Tooltip title="Date Last Modified" placement="top-start">
-            <Typography variant="caption">
+            <Typography variant="caption" gutterBottom>
               modified on: {props.modifiedOn}
             </Typography>
           </Tooltip>

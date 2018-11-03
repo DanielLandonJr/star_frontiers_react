@@ -4,10 +4,10 @@
 
 import React, { Component } from 'react';
 import Reducer from './Reducer';
-import * as ActionsList from './Actions';
-import FireBaseObject from './Firebase';
+import ActionsList from './Actions';
 import CollectionList from './Collections';
-import bcrypt from 'bcryptjs';
+import FirebaseDataBase from './Firebase';
+import * as FBdata from './DataManipulation';
 
 const Context = React.createContext(undefined);
 
@@ -20,18 +20,23 @@ export class Provider extends Component {
       warehouseIsShowing: false,
       aboutIsShowing: false
     },
+    kh_hulls: undefined,
     generatedHash: '',
     // dispatch is used to update the state
     dispatch: action => {
       this.setState(state => Reducer(state, action));
-    },
-    generateHash: whatToHash => {
-      const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(whatToHash, salt);
-
-      return hash;
     }
   };
+
+  async componentDidMount() {
+    await FBdata.ReadData(
+      CollectionList.KNIGHT_HAKWS_HULLS,
+      'type',
+      this.state
+    );
+
+    console.log(this.state.kh_hulls);
+  }
 
   render() {
     return (
@@ -44,5 +49,6 @@ export class Provider extends Component {
 
 export const Consumer = Context.Consumer;
 export const Actions = ActionsList;
-export const firebase = FireBaseObject;
 export const Collections = CollectionList;
+export const FireBaseDB = FirebaseDataBase;
+export const FireBaseData = FBdata;

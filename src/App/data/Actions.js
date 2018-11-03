@@ -1,6 +1,6 @@
 // this is a list of actions that can be performed for state change
 
-exports = {
+module.exports = {
   DATA_CREATE: 'data_create',
   DATA_READ: 'data_read',
   DATA_UPDATE: 'data_update',
