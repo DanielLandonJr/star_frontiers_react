@@ -12,7 +12,7 @@ import SignIn from './App/components/pages/LogIn';
 import NotFound from './App/components/pages/NotFound';
 import Home from './App/components/pages/Home';
 import KnightHawksDashboard from './App/components/knightHawks/Dashboard';
-import AlphaDawnDashboard from './App/components/alphaDawn/Dashboard';
+// import AlphaDawnDashboard from './App/components/alphaDawn/Dashboard';
 
 const theme = createMuiTheme({
   palette: {
@@ -57,11 +57,11 @@ class App extends Component {
                         path="/knighthawks/dashboard"
                         component={KnightHawksDashboard}
                       />
-                      <Route
+                      {/* <Route
                         exact
                         path="/alphadawn/dashboard"
                         component={AlphaDawnDashboard}
-                      />
+                      /> */}
                       {/* 404 */}
                       <Route component={NotFound} />
                     </Switch>

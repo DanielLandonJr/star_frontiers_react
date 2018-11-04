@@ -9,14 +9,14 @@ const Reducer = (state, action) => {
         ...state,
         ad_showing: action.payload
       };
-    case Actions.DATA_CREATE:
-      return state;
-    case Actions.DATA_READ:
-      return { ...state, [action.collection]: action.payload };
+    // case Actions.DATA_CREATE:
+    //   return state;
     case Actions.DATA_UPDATE:
-      return state;
-    case Actions.DATA_DELETE:
-      return state;
+      return { ...state, [action.collection]: action.payload };
+    // case Actions.DATA_UPDATE:
+    //   return state;
+    // case Actions.DATA_DELETE:
+    //   return state;
     default:
       return state;
   }

@@ -7,8 +7,7 @@ import PeopleIcon from '@material-ui/icons/People';
 import HomeIcon from '@material-ui/icons/Store';
 import AssignmentIcon from '@material-ui/icons/Assignment';
 import ShoppingCartIcon from '@material-ui/icons/ShoppingCart';
-import { Consumer } from '../../data/Context';
-import * as Actions from '../../data/Actions';
+import { Consumer, Actions } from '../../data/Context';
 import { Link } from 'react-router-dom';
 
 export const HomeListItems = () => {

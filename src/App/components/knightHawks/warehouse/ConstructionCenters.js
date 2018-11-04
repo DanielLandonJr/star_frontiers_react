@@ -5,7 +5,8 @@ import {
   ExpansionPanel,
   ExpansionPanelSummary,
   ExpansionPanelDetails,
-  Typography
+  Typography,
+  TextField
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
 import { Consumer } from '../../../data/Context';
@@ -31,13 +32,20 @@ const styles = theme => ({
 
 class ConstructionCenters extends React.Component {
   state = {
-    expanded: null
+    expanded: null,
+    length: 50
   };
 
   handleChange = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false
     });
+  };
+
+  onChange = event => {
+    // allows us to change the values in the fields, does not update the state
+    this.setState({ [event.target.name]: event.target.value });
+    // this.state.whatToHash();
   };
 
   render() {
@@ -64,6 +72,16 @@ class ConstructionCenters extends React.Component {
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
                   <Typography>Various fields showing particulars.</Typography>
+                  <TextField
+                    id="length"
+                    name="length"
+                    label="Length"
+                    value={this.state.length}
+                    onChange={this.onChange}
+                    margin="normal"
+                    disabled={this.state.disabled}
+                    fullWidth
+                  />
                 </ExpansionPanelDetails>
               </ExpansionPanel>
             </React.Fragment>

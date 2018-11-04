@@ -13,6 +13,7 @@ import { Consumer } from '../../../data/Context';
 import CreatedInformation from '../../helpers/CreatedInformation';
 import HashInformation from '../../helpers/HashInformation';
 import bcrypt from 'bcryptjs';
+import { Button } from '@material-ui/core';
 
 const styles = theme => ({
   root: {
@@ -83,11 +84,9 @@ class Hull extends React.Component {
       }, ${this.state.adminMod}`;
 
       const salt = bcrypt.genSaltSync(10);
-      const hash = bcrypt.hashSync(strContent, salt);
+      const newHash = bcrypt.hashSync(strContent, salt);
 
-      this.setState({ hash: hash });
-
-      console.log(this.state.hash);
+      this.setState({ [this.state.hash]: newHash });
     }
   };
 
@@ -100,10 +99,12 @@ class Hull extends React.Component {
   onChange = event => {
     // allows us to change the values in the fields, does not update the state
     this.setState({ [event.target.name]: event.target.value });
+    // this.state.whatToHash();
   };
 
   componentWillMount() {
     const { hull } = this.props;
+
     this.setState({
       id: hull.id,
       hullSize: hull.type,
@@ -123,12 +124,39 @@ class Hull extends React.Component {
       disabled: hull.admin,
       panelNumber: hull.id
     });
+  }
 
-    // create a hash if one does not exist
+  DeleteRecord = id => {
+    this.props.remove(id);
+  };
+
+  UpdateRecord = id => {
     if (this.state.hash === '') {
       this.state.whatToHash();
     }
-  }
+
+    const changedRecord = {
+      id: this.state.id,
+      hullSize: this.state.type,
+      length: this.state.length,
+      diameter: this.state.diameter,
+      hatches: this.state.hatches,
+      engines: this.state.engines,
+      adf: this.state.adf,
+      mr: this.state.mr,
+      infoText: this.state.infoText,
+      createdOn: Math.floor(Date.now() / 1000),
+      createdBy: this.state.createdBy,
+      modifiedOn: Math.floor(Date.now() / 1000),
+      modifiedBy: this.state.modifiedBy,
+      adminMod: false,
+      hash: this.state.hash
+    };
+
+    console.log(id);
+    console.log(changedRecord);
+    // this.props.update(id, data)
+  };
 
   render() {
     const { classes } = this.props;
@@ -174,6 +202,17 @@ class Hull extends React.Component {
                               <Tooltip title="Record ID" placement="top-start">
                                 <Typography>id: {this.state.id}</Typography>
                               </Tooltip>
+                              <Button
+                                variant="contained"
+                                color="primary"
+                                className={classes.button}
+                                onClick={() => {
+                                  this.DeleteRecord(this.state.id);
+                                }}
+                                disabled={this.state.disabled}
+                              >
+                                Delete
+                              </Button>
                             </Grid>
                             {/* length/diameter */}
                             <Grid item xs={12}>
@@ -349,6 +388,18 @@ class Hull extends React.Component {
                         <Grid item xs={12} className={classes.gridItem}>
                           <HashInformation hash={this.state.hash} />
                         </Grid>
+                        <Button
+                          variant="contained"
+                          color="primary"
+                          className={classes.button}
+                          onClick={() => {
+                            this.UpdateRecord(this.state.id);
+                          }}
+                          fullWidth
+                          disabled={this.state.disabled}
+                        >
+                          Update
+                        </Button>
                       </Grid>
                     </Grid>
                   </Grid>
@@ -364,7 +415,9 @@ class Hull extends React.Component {
 
 Hull.propTypes = {
   classes: PropTypes.object.isRequired,
-  hull: PropTypes.object.isRequired
+  hull: PropTypes.object.isRequired,
+  remove: PropTypes.func.isRequired,
+  update: PropTypes.func.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(Hull);

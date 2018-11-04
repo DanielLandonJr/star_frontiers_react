@@ -4,10 +4,10 @@
 
 import React, { Component } from 'react';
 import Reducer from './Reducer';
-import ActionsList from './Actions';
+import * as ActionsList from './Actions';
 import CollectionList from './Collections';
 import FirebaseDataBase from './Firebase';
-import * as FBdata from './DataManipulation';
+// import * as FBdata from './DataManipulation';
 
 const Context = React.createContext(undefined);
 
@@ -25,18 +25,18 @@ export class Provider extends Component {
     // dispatch is used to update the state
     dispatch: action => {
       this.setState(state => Reducer(state, action));
+
+      console.log(this.state);
     }
   };
 
-  async componentDidMount() {
-    await FBdata.ReadData(
-      CollectionList.KNIGHT_HAKWS_HULLS,
-      'type',
-      this.state
-    );
-
-    console.log(this.state.kh_hulls);
-  }
+  // async componentDidMount() {
+  //   await FBdata.ReadData(
+  //     CollectionList.KNIGHT_HAWKS_HULLS,
+  //     'type',
+  //     this.state
+  //   );
+  // }
 
   render() {
     return (
@@ -51,4 +51,4 @@ export const Consumer = Context.Consumer;
 export const Actions = ActionsList;
 export const Collections = CollectionList;
 export const FireBaseDB = FirebaseDataBase;
-export const FireBaseData = FBdata;
+// export const FireBaseData = FBdata;
