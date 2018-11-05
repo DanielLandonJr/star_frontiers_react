@@ -17,7 +17,7 @@ const styles = DashboardTheme;
 
 class Dashboard extends React.Component {
   state = {
-    open: true,
+    open: false,
     // what is showing, default to about
     showing: 'warehouse'
   };

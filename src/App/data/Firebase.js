@@ -20,9 +20,9 @@ const config = {
 firebase.initializeApp(config);
 
 // create database
-const FirebaseDataBase = firebase.firestore();
+const FirebaseDB = firebase.firestore();
 
 // some database settings
-FirebaseDataBase.settings({ timestampsInSnapshots: true });
+FirebaseDB.settings({ timestampsInSnapshots: true });
 
-export default FirebaseDataBase;
+export default FirebaseDB;

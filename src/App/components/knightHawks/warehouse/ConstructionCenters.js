@@ -56,11 +56,12 @@ class ConstructionCenters extends React.Component {
       <Consumer>
         {value => {
           return (
-            <React.Fragment className={classes.root}>
+            <React.Fragment>
               <CssBaseline />
               <ExpansionPanel
                 expanded={expanded === 'panel1'}
                 onChange={this.handleChange('panel1')}
+                className={classes.root}
               >
                 <ExpansionPanelSummary expandIcon={<ExpandMoreIcon />}>
                   <Typography className={classes.heading}>

@@ -5,17 +5,25 @@ import { Typography, Tooltip } from '@material-ui/core';
 
 const styles = theme => ({
   gridContainer: {},
-  gridItem: {}
+  gridItem: {},
+  secondaryDark: {
+    backgroundColor: theme.palette.secondary.dark
+  },
+  secondaryDarkText: {
+    color: theme.palette.secondary.dark
+  }
 });
 
 function HashInformation(props) {
-  // const { classes } = props;
+  const { classes } = props;
 
   return (
     <React.Fragment>
       <CssBaseline />
       <Tooltip title="Hash Value For Record" placement="top-start">
-        <Typography variant="caption">hash: {props.hash}</Typography>
+        <Typography variant="caption">
+          <span className={classes.secondaryDarkText}>hash:</span> {props.hash}
+        </Typography>
       </Tooltip>
     </React.Fragment>
   );

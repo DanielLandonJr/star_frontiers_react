@@ -5,11 +5,20 @@ import { Grid, Typography, Tooltip } from '@material-ui/core';
 
 const styles = theme => ({
   gridContainer: {},
-  gridItem: {}
+  gridItem: {},
+  secondaryDark: {
+    backgroundColor: theme.palette.secondary.dark
+  },
+  secondaryDarkText: {
+    color: theme.palette.secondary.dark
+  }
 });
 
 function CreatedInformation(props) {
   const { classes } = props;
+
+  // let createdDate = Date(props.createdOn);
+  // createdDate.toLocaleDateString('en-US');
 
   return (
     <React.Fragment>
@@ -19,12 +28,14 @@ function CreatedInformation(props) {
         <Grid item xs={12} sm={6}>
           <Tooltip title="Date Created" placement="top-start">
             <Typography variant="caption" gutterBottom>
-              created on: {props.createdOn}
+              <span className={classes.secondaryDarkText}>created on:</span>{' '}
+              {Date(props.createdOn)}
             </Typography>
           </Tooltip>
           <Tooltip title="Person That Created Record" placement="top-start">
             <Typography variant="caption">
-              created by: {props.createdBy}
+              <span className={classes.secondaryDarkText}>created by:</span>{' '}
+              {props.createdBy}
             </Typography>
           </Tooltip>
         </Grid>
@@ -32,12 +43,14 @@ function CreatedInformation(props) {
         <Grid item xs={12} sm={6}>
           <Tooltip title="Date Last Modified" placement="top-start">
             <Typography variant="caption" gutterBottom>
-              modified on: {props.modifiedOn}
+              <span className={classes.secondaryDarkText}>modified on:</span>{' '}
+              {Date(props.modifiedOn)}
             </Typography>
           </Tooltip>
           <Tooltip title="Person That Modified Record" placement="top-start">
             <Typography variant="caption">
-              modified by: {props.modifiedBy}
+              <span className={classes.secondaryDarkText}>modified by:</span>{' '}
+              {props.modifiedBy}
             </Typography>
           </Tooltip>
         </Grid>
@@ -49,64 +62,9 @@ function CreatedInformation(props) {
 CreatedInformation.propTypes = {
   classes: PropTypes.object.isRequired,
   createdBy: PropTypes.string.isRequired,
-  createdOn: PropTypes.string.isRequired,
+  createdOn: PropTypes.number.isRequired,
   modifiedBy: PropTypes.string.isRequired,
-  modifiedOn: PropTypes.string.isRequired
+  modifiedOn: PropTypes.number.isRequired
 };
 
 export default withStyles(styles, { withTheme: true })(CreatedInformation);
-
-// import React from 'react';
-// import PropTypes from 'prop-types';
-// import { withStyles } from '@material-ui/core/styles';
-// import Paper from '@material-ui/core/Paper';
-// import Grid from '@material-ui/core/Grid';
-
-// const styles = theme => ({
-//   root: {
-//     flexGrow: 1
-//   },
-//   paper: {
-//     padding: theme.spacing.unit * 2,
-//     textAlign: 'center',
-//     color: theme.palette.text.secondary
-//   }
-// });
-
-// function CreatedInformation(props) {
-//   const { classes } = props;
-
-//   return (
-//     <div className={classes.root}>
-//       <Grid container spacing={24}>
-//         <Grid item xs={12}>
-//           <Paper className={classes.paper}>xs=12</Paper>
-//         </Grid>
-//         <Grid item xs={12} sm={6}>
-//           <Paper className={classes.paper}>xs=12 sm=6</Paper>
-//         </Grid>
-//         <Grid item xs={12} sm={6}>
-//           <Paper className={classes.paper}>xs=12 sm=6</Paper>
-//         </Grid>
-//         <Grid item xs={6} sm={3}>
-//           <Paper className={classes.paper}>xs=6 sm=3</Paper>
-//         </Grid>
-//         <Grid item xs={6} sm={3}>
-//           <Paper className={classes.paper}>xs=6 sm=3</Paper>
-//         </Grid>
-//         <Grid item xs={6} sm={3}>
-//           <Paper className={classes.paper}>xs=6 sm=3</Paper>
-//         </Grid>
-//         <Grid item xs={6} sm={3}>
-//           <Paper className={classes.paper}>xs=6 sm=3</Paper>
-//         </Grid>
-//       </Grid>
-//     </div>
-//   );
-// }
-
-// CreatedInformation.propTypes = {
-//   classes: PropTypes.object.isRequired
-// };
-
-// export default withStyles(styles)(CreatedInformation);

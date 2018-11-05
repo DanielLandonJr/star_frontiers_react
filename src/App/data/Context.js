@@ -1,13 +1,6 @@
 // context api from react for global state
-
-// everything about the state should go through the context file
-
 import React, { Component } from 'react';
-import Reducer from './Reducer';
-import * as ActionsList from './Actions';
-import CollectionList from './Collections';
-import FirebaseDataBase from './Firebase';
-// import * as FBdata from './DataManipulation';
+import bcrypt from 'bcryptjs';
 
 const Context = React.createContext(undefined);
 
@@ -20,23 +13,13 @@ export class Provider extends Component {
       warehouseIsShowing: false,
       aboutIsShowing: false
     },
-    kh_hulls: undefined,
-    generatedHash: '',
-    // dispatch is used to update the state
-    dispatch: action => {
-      this.setState(state => Reducer(state, action));
+    CreateHash: whatToHash => {
+      const salt = bcrypt.genSaltSync(10);
+      const hash = bcrypt.hashSync(whatToHash, salt);
 
-      console.log(this.state);
+      return hash;
     }
   };
-
-  // async componentDidMount() {
-  //   await FBdata.ReadData(
-  //     CollectionList.KNIGHT_HAWKS_HULLS,
-  //     'type',
-  //     this.state
-  //   );
-  // }
 
   render() {
     return (
@@ -48,7 +31,3 @@ export class Provider extends Component {
 }
 
 export const Consumer = Context.Consumer;
-export const Actions = ActionsList;
-export const Collections = CollectionList;
-export const FireBaseDB = FirebaseDataBase;
-// export const FireBaseData = FBdata;
