@@ -1,3 +1,5 @@
+// about component for knight hawks
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles } from '@material-ui/core';
@@ -23,31 +25,35 @@ function About(props) {
           About Knight Hawks
         </Typography>
         <br />
-        <Typography variant="body1">
+        <Typography variant="body1" gutterBottom>
+          Select Warehouse and pick Hulls from the dropdown. Complete C.R.U.D.
+          Currently I am using Firebase with onSnapshot. This creates a listener
+          so anytime the database is changed it will send a push notification
+          back. Right now the "modify" does not seem to work...however the data
+          is presistent. You can add/update/delete. MORE DATA IS COMING...THIS
+          IS JUST THE INITIAL HOST OF THE APPLICATION.
+        </Typography>
+        <br />
+        <Typography variant="body1" gutterBottom>
           Knight Hawks belongs to Wizards of the Coast. This application is for
           educational purposes only.
         </Typography>
         <br />
-        <Typography variant="body1">
+        <Typography variant="body1" gutterBottom>
           "Knight Hawks Game is a set of rules that allows players of the{' '}
           <strong>STAR FRONTERS&trade;</strong> role-playing game to design,
           build and use spaceships in their campaigns." This line can be found
           in the original rulebook as it was released in 1983.
         </Typography>
         <br />
-        <Typography variant="body1">
+        <Typography variant="body1" gutterBottom>
           <strong>Ships: </strong> allows you to view all of the ships that have
           been created using the rules presented here.
         </Typography>
         <br />
-        <Typography variant="body1">
+        <Typography variant="body1" gutterBottom>
           <strong>Warehouse: </strong> In the warehouse you can review the data
           that is used for the rules.
-        </Typography>
-        <br />
-        <Typography variant="body1">
-          Both sections will allow you to Create, Read, Update and Delete the
-          data (C.R.U.D.).
         </Typography>
       </Paper>
     </React.Fragment>

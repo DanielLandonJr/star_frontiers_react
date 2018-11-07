@@ -2,7 +2,6 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import LockIcon from '@material-ui/icons/LockOutlined';
 import { Link } from 'react-router-dom';
 import { CssBaseline, withStyles } from '@material-ui/core';
 import {
@@ -13,6 +12,7 @@ import {
 } from '@material-ui/core';
 import { Checkbox, Input, InputLabel, Paper } from '@material-ui/core';
 import { Typography } from '@material-ui/core';
+import LockIcon from '@material-ui/icons/LockOutlined';
 
 const styles = theme => ({
   layout: {
@@ -58,6 +58,12 @@ function SignIn(props) {
           <Avatar className={classes.avatar}>
             <LockIcon />
           </Avatar>
+          <Typography className={classes.typography} variant="h4">
+            Star Frontiers
+          </Typography>
+          <Typography className={classes.typography} variant="caption">
+            Alpha Dawn/Knight Hawks Generator
+          </Typography>
           <Typography
             className={classes.typography}
             component="h1"
@@ -93,8 +99,7 @@ function SignIn(props) {
               label="Remember me"
             />
             <Typography>
-              Stage 1: Authentication disabled until Stage 4. Click button to
-              continue.
+              Authentication disabled ... just push the button Christian
             </Typography>
             <Button
               type="submit"

@@ -1,3 +1,5 @@
+// dashboard...everything is controlled from here
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import classNames from 'classnames';
@@ -8,7 +10,6 @@ import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItems from './ListItems';
-import Ships from './Ships';
 import Warehouse from './warehouse/Warehouse';
 import About from './About';
 import { DashboardTheme } from './DashboardTheme';
@@ -17,9 +18,10 @@ const styles = DashboardTheme;
 
 class Dashboard extends React.Component {
   state = {
+    // side drawer is closed
     open: false,
     // what is showing, default to about
-    showing: 'warehouse'
+    showing: 'about'
   };
 
   handleDrawerOpen = () => {
@@ -82,13 +84,18 @@ class Dashboard extends React.Component {
             </IconButton>
           </div>
 
-          {/* items that show inn the list on the left */}
+          {/* items that show in the list on the left */}
           <ListItems callBack={this.handleChildPropChange} />
         </Drawer>
         <main className={classes.content}>
           <div className={classes.toolbar} />
+
+          {/* what item is showing based on what was selected in the side menu */}
+
           {/* which component is showing... */}
-          {this.state.showing === 'ships' ? <Ships /> : null}
+          {this.state.showing === 'ships' ? (
+            <Typography variant="h3">Ships Under Construction.</Typography>
+          ) : null}
           {this.state.showing === 'warehouse' ? <Warehouse /> : null}
           {this.state.showing === 'about' ? <About /> : null}
         </main>

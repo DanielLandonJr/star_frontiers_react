@@ -2,7 +2,7 @@
 
 All rights belong to Wizards of the Coast. This is a demonstration application for educational purposes only. The data/rules belong to them the code belongs to me.
 
-Star Frontiers was a RPG realsed back in the 80's by TSR (the makers of Dungeons & Dragons). It is a futuristic RPG where you could play different races and explore the galaxay (as small as it was).
+Star Frontiers was a RPG released back in the 80's by TSR (the makers of Dungeons & Dragons). It is a futuristic RPG where you could play different races and explore the galaxay (as small as it was).
 
 The ruleset was broken into two seperate parts. Alpha Dawn was the rules for character creation and general game play. Knight Hawks was the rules for creating and using space ships.
 
@@ -21,13 +21,17 @@ I also want to include TypeScript in the application. Currently I am working my 
 
 ## Running the Application
 
-Once Stage 1 is completed the application will be hosted. To acces the app just go to the appropriate link (once supplied).
+Stage 1 is partially completed. I have one dataset up and running. I have come up with a simpler way of doing this but for now the one dataset will be enough.
 
 ## Install
 
 As usual
 
-`npm install` and enjoy.
+`npm install`
+
+## Development Server
+
+`npm run start`
 
 ---
 

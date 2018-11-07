@@ -4,12 +4,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles } from '@material-ui/core';
 import { List, ListItem, ListItemIcon, ListItemText } from '@material-ui/core';
-import {
-  Divider,
-  Tooltip,
-  BottomNavigation,
-  BottomNavigationAction
-} from '@material-ui/core';
+import { Divider, Tooltip } from '@material-ui/core';
 import DashboardIcon from '@material-ui/icons/Dashboard';
 import HomeIcon from '@material-ui/icons/Store';
 import AssignmentIcon from '@material-ui/icons/Assignment';
@@ -36,7 +31,7 @@ const styles = theme => ({
 class ListItems extends React.Component {
   state = {
     // used to show which item is currently selected, default to about
-    selectedIndex: 2,
+    selectedIndex: 3,
     value: 0
   };
 
@@ -85,6 +80,7 @@ class ListItems extends React.Component {
                 <Tooltip title="Ships" placement="right">
                   <ListItem
                     button
+                    // which item is selected, for display
                     selected={this.state.selectedIndex === 1}
                     // change what is showing
                     onClick={event => {
@@ -135,19 +131,23 @@ class ListItems extends React.Component {
                   </ListItem>
                 </Tooltip>
 
-                <BottomNavigation
-                  value={value}
-                  onChange={this.handleChange}
-                  showLabels
-                  className={classes.bottomNav}
-                >
-                  <Tooltip title="GitHub Repo" placement="right">
-                    <BottomNavigationAction
-                      label="GitHub"
-                      icon={<RestoreIcon />}
-                    />
-                  </Tooltip>
-                </BottomNavigation>
+                <Tooltip title="GitHub Repo" placement="right">
+                  <ListItem
+                    button
+                    // ninja fu to get a link to github page
+                    onClick={() => {
+                      window.open(
+                        'https://github.com/DanielLandonJr/star_frontiers_react',
+                        '_blank'
+                      );
+                    }}
+                  >
+                    <ListItemIcon>
+                      <RestoreIcon />
+                    </ListItemIcon>
+                    <ListItemText primary="GitHub Repo" />
+                  </ListItem>
+                </Tooltip>
               </List>
             </React.Fragment>
           );

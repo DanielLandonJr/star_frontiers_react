@@ -1,7 +1,8 @@
+// simple spinner for waiting
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles, Grid } from '@material-ui/core';
-// import { CircularProgress, Paper } from '@material-ui/core';
 import { CircularProgress } from '@material-ui/core';
 
 const styles = theme => ({
@@ -26,13 +27,11 @@ function Spinner(props) {
       <CssBaseline />
       <Grid container className={classes.root} justify="center">
         <Grid item>
-          {/* <Paper className={classes.Paper}> */}
           <CircularProgress
             className={classes.progress}
             size={100}
             thickness={2}
           />
-          {/* </Paper> */}
         </Grid>
       </Grid>
     </React.Fragment>

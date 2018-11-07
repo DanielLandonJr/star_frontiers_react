@@ -1,3 +1,5 @@
+// sample fiel for dashboard from material-ui
+
 import React from 'react';
 import ResponsiveContainer from 'recharts/lib/component/ResponsiveContainer';
 import LineChart from 'recharts/lib/chart/LineChart';
@@ -15,7 +17,7 @@ const data = [
   { name: 'Thu', Visits: 4780, Orders: 2908 },
   { name: 'Fri', Visits: 5890, Orders: 4800 },
   { name: 'Sat', Visits: 4390, Orders: 3800 },
-  { name: 'Sun', Visits: 4490, Orders: 4300 },
+  { name: 'Sun', Visits: 4490, Orders: 4300 }
 ];
 
 function SimpleLineChart() {
@@ -29,7 +31,12 @@ function SimpleLineChart() {
         <Tooltip />
         <Legend />
         <Line type="monotone" dataKey="Visits" stroke="#82ca9d" />
-        <Line type="monotone" dataKey="Orders" stroke="#8884d8" activeDot={{ r: 8 }} />
+        <Line
+          type="monotone"
+          dataKey="Orders"
+          stroke="#8884d8"
+          activeDot={{ r: 8 }}
+        />
       </LineChart>
     </ResponsiveContainer>
   );

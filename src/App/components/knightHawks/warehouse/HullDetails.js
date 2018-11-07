@@ -1,3 +1,5 @@
+// individual hull item...extensive file due to material-ui
+
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles } from '@material-ui/core';
@@ -70,6 +72,7 @@ class HullDetails extends Component {
     hash: '',
     type: 0,
     CreateHash: () => {
+      // this creates a hash out of the complete record
       const whatToHash = `${this.state.id}, ${this.state.length}, ${
         this.state.diameter
       }, ${this.state.hatches}, ${this.state.engines}, ${this.state.adf}, ${
@@ -90,6 +93,7 @@ class HullDetails extends Component {
   componentWillMount() {
     const { incomingHullData } = this.props;
 
+    // set state with incoming props
     this.setState({
       disabled: incomingHullData.admin,
       panelNumber: incomingHullData.id,
@@ -110,20 +114,14 @@ class HullDetails extends Component {
       type: incomingHullData.type
     });
 
+    // if the hash does not exist create one...this is similiar to the id...not presistent until the record has been modified and saved .
     if (incomingHullData.hash === '') {
       // no hash found so create one
       this.state.CreateHash();
     }
   }
 
-  verifyHash = () => {
-    let newHash = '';
-    if (this.state.hash === '') {
-      newHash = this.state.CreateHash(this.currentRecord);
-      this.setState({ hash: newHash });
-    }
-  };
-
+  // is the panel expanded or not...this panel should force another panel to close when this one opens ... have to figure out how to get this to work
   handleChange = panel => (event, expanded) => {
     this.setState({
       expanded: expanded ? panel : false
@@ -132,14 +130,19 @@ class HullDetails extends Component {
 
   onChange = event => {
     this.setState({ [event.target.name]: event.target.value });
+    // create a new hash with every key press ... need to come up with a better solution
     this.state.CreateHash();
   };
 
   DeleteRecord = () => {
+    // callback to parent to delete record
     this.props.remove(this.state.id);
   };
 
   UpdateRecord = () => {
+    // callback to parent to update record
+
+    // collect current values from state
     const currentRecord = {
       id: this.state.id,
       length: this.state.length,
@@ -151,13 +154,14 @@ class HullDetails extends Component {
       infoText: this.state.infoText,
       createdOn: this.state.createdOn,
       createdBy: this.state.createdBy,
-      modifiedOn: this.state.modifiedOn,
+      modifiedOn: Math.floor(Date.now() / 1000),
       modifiedBy: this.state.modifiedBy,
       admin: this.state.admin,
       hash: this.state.hash,
       type: this.state.type
     };
 
+    // callback to update record
     this.props.update(this.state.id, currentRecord);
   };
 
@@ -180,15 +184,24 @@ class HullDetails extends Component {
                   Hull Type: {this.state.type}
                 </Typography>
               </Grid>
+
               <Grid item xs={12} sm={4}>
+                {/* if type = 0 then this is a new record or one that has been marked for mdoification....show a message */}
                 {this.state.type === 0 ? (
                   <Typography className={classes.secondaryHeading}>
-                    NEW RECORD...OPEN TO MODIFY
+                    NEW RECORD ... Open and Modify
+                  </Typography>
+                ) : null}
+                {/* record is disabled by admin flag in database....show a message */}
+                {this.state.disabled ? (
+                  <Typography className={classes.secondaryHeading}>
+                    Disabled ... Cannot Modify
                   </Typography>
                 ) : null}
               </Grid>
             </Grid>
           </ExpansionPanelSummary>
+
           <ExpansionPanelDetails>
             <Grid container spacing={16}>
               {/* divider, single line */}
@@ -197,8 +210,8 @@ class HullDetails extends Component {
                 <br />
               </Grid>
 
-              {/* id, single line */}
-              <Grid item xs={12}>
+              {/* id/hull type, single line, split, two items */}
+              <Grid item xs={12} sm={6}>
                 <Tooltip title="Database Record ID" placement="top-start">
                   <Typography variant="caption">
                     <span className={classes.secondaryDarkText}>ID:</span>{' '}
@@ -207,26 +220,136 @@ class HullDetails extends Component {
                 </Tooltip>
               </Grid>
 
-              {/* length/width, single line, split, two items */}
               <Grid item xs={12} sm={6}>
                 <Tooltip
-                  title="Length of Ship (can be +/- 25%)"
+                  title="Setting value other than &quot;0&quot; will mark this as a completed record."
                   placement="top-start"
                 >
                   <TextField
                     className={classes.textField}
-                    id="length"
-                    name="length"
-                    label="Length"
-                    value={this.state.length}
+                    id="type"
+                    name="type"
+                    helperText="Hull Type/Size of Ship"
+                    label="Hull Type"
+                    value={this.state.type}
                     onChange={this.onChange}
-                    margin="normal"
+                    margin="dense"
                     disabled={this.state.disabled}
                     fullWidth
                   />
                 </Tooltip>
               </Grid>
-              <Grid item xs={12} sm={6} />
+
+              {/* length/width, single line, split, two items */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  id="length"
+                  name="length"
+                  helperText="Length of Ship (can be +/- 25%)"
+                  label="Length"
+                  value={this.state.length}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  id="diameter"
+                  name="diameter"
+                  helperText="Diameter of Ship (can be +/- 25%)"
+                  label="Diameter"
+                  value={this.state.diameter}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                />
+              </Grid>
+
+              {/* hatches/engines, single line, split, two items */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  id="hatches"
+                  name="hatches"
+                  helperText="Minimum # if Hatches"
+                  label="Hatches"
+                  value={this.state.hatches}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  id="engines"
+                  name="engines"
+                  helperText="Maximum # of Engines"
+                  label="Engines"
+                  value={this.state.engines}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                />
+              </Grid>
+
+              {/* adf/mr, single line, split, two items */}
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  id="adf"
+                  name="adf"
+                  helperText="Acceleration/Deceleration Factor"
+                  label="ADF"
+                  value={this.state.adf}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                />
+              </Grid>
+
+              <Grid item xs={12} sm={6}>
+                <TextField
+                  className={classes.textField}
+                  id="mr"
+                  name="mr"
+                  helperText="Maneuver Rating"
+                  label="MR"
+                  value={this.state.mr}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                />
+              </Grid>
+
+              <Grid item xs={12}>
+                <TextField
+                  className={classes.textField}
+                  id="infoText"
+                  name="infoText"
+                  helperText="Additional Information"
+                  label="Additional Information"
+                  value={this.state.infoText}
+                  onChange={this.onChange}
+                  margin="dense"
+                  disabled={this.state.disabled}
+                  fullWidth
+                  multiline
+                  rows={4}
+                  variant="outlined"
+                />
+              </Grid>
 
               {/* divider, single line */}
               <Grid item xs={12}>
@@ -242,9 +365,11 @@ class HullDetails extends Component {
                   modifiedOn={this.state.modifiedOn}
                 />
               </Grid>
+
               <Grid item xs={12}>
                 <HashInformation hash={this.state.hash} />
               </Grid>
+
               <Grid
                 container
                 direction="row"
@@ -264,12 +389,14 @@ class HullDetails extends Component {
                   />
                   Save
                 </Button>
+
                 <Button
                   variant="contained"
                   size="small"
                   color="secondary"
                   className={classes.button}
                   disabled={this.state.disabled}
+                  onClick={this.DeleteRecord}
                 >
                   <DeleteIcon
                     className={classNames(classes.leftIcon, classes.iconSmall)}

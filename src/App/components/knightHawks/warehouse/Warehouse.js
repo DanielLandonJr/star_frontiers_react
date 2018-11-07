@@ -1,14 +1,12 @@
-// this will be a list of list....data CRUD for the application
+// the warehouse will contain a select item that allows the user to pick what ship component they want to view/modify....weapons, hulls, etc
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles } from '@material-ui/core';
-import { Typography, Grid, Paper } from '@material-ui/core';
-import { Select, MenuItem, FormControl, Input } from '@material-ui/core';
+import { Typography, Grid, Paper, Select } from '@material-ui/core';
+import { MenuItem, FormControl, Input } from '@material-ui/core';
 import { Consumer } from '../../../data/Context';
 import Hulls from './Hulls';
-import ConstructionCenters from './ConstructionCenters';
-import Ships from '../Ships';
 
 const styles = theme => ({
   container: {
@@ -30,7 +28,7 @@ const styles = theme => ({
 
 class Warehouse extends Component {
   state = {
-    showing: 'hulls'
+    showing: ''
   };
 
   handleChange = event => {
@@ -64,9 +62,6 @@ class Warehouse extends Component {
                               <em>None</em>
                             </MenuItem>
                             <MenuItem value={'hulls'}>Hulls</MenuItem>
-                            <MenuItem value={'constructionCenters'}>
-                              Construction Centers
-                            </MenuItem>
                           </Select>
                         </FormControl>
                       </Paper>
@@ -74,16 +69,13 @@ class Warehouse extends Component {
                   </form>
                 </Grid>
                 <Grid item xs={12}>
+                  {/* determine what is showing and put it out there */}
                   {this.state.showing === '' ? (
                     <Typography variant="h6">
                       Select a componet from the list above.
                     </Typography>
                   ) : null}
-                  {this.state.showing === 'ships' ? <Ships /> : null}
                   {this.state.showing === 'hulls' ? <Hulls /> : null}
-                  {this.state.showing === 'constructionCenters' ? (
-                    <ConstructionCenters />
-                  ) : null}
                 </Grid>
               </Grid>
             </React.Fragment>

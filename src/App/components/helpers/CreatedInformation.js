@@ -1,3 +1,5 @@
+// information about created/modified data etc...will be part of each individual componet so made a seperate componet for it
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles } from '@material-ui/core';
@@ -16,9 +18,6 @@ const styles = theme => ({
 
 function CreatedInformation(props) {
   const { classes } = props;
-
-  // let createdDate = Date(props.createdOn);
-  // createdDate.toLocaleDateString('en-US');
 
   return (
     <React.Fragment>

@@ -1,3 +1,5 @@
+// seperate component to display hash information
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import { CssBaseline, withStyles } from '@material-ui/core';
@@ -21,7 +23,7 @@ function HashInformation(props) {
     <React.Fragment>
       <CssBaseline />
       <Tooltip title="Hash Value For Record" placement="top-start">
-        <Typography variant="caption">
+        <Typography variant="caption" noWrap>
           <span className={classes.secondaryDarkText}>hash:</span> {props.hash}
         </Typography>
       </Tooltip>

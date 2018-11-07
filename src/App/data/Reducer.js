@@ -1,4 +1,4 @@
-// the reducer does the actual changing of the state based on what is passed to it from dsiaptch in AudioContext.js
+// the reducer does the actual changing of the state based on what is passed to it from dsiaptch in Context.js
 
 import { Actions } from './Context';
 

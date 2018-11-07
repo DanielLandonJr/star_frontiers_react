@@ -1,17 +1,11 @@
-// 404 page for things not found
+// 404 page for things not found...this a cut/paste of the login screen
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import CancelIcon from '@material-ui/icons/Cancel';
+import { CssBaseline, withStyles } from '@material-ui/core';
 import { Link } from 'react-router-dom';
-import {
-  Avatar,
-  Button,
-  CssBaseline,
-  Paper,
-  Typography,
-  withStyles
-} from '@material-ui/core';
+import { Avatar, Button, Paper, Typography } from '@material-ui/core';
+import CancelIcon from '@material-ui/icons/Cancel';
 
 const styles = theme => ({
   layout: {
@@ -57,7 +51,9 @@ function NotFound(props) {
           <Avatar className={classes.avatar}>
             <CancelIcon />
           </Avatar>
-          <Typography variant="h5">Page Not Found!</Typography>
+          <Typography variant="h5">
+            Page Not Found or Resource Not Availabe
+          </Typography>
           <form className={classes.form}>
             <Button
               fullWidth

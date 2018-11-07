@@ -12,8 +12,10 @@ import SignIn from './App/components/pages/LogIn';
 import NotFound from './App/components/pages/NotFound';
 import Home from './App/components/pages/Home';
 import KnightHawksDashboard from './App/components/knightHawks/Dashboard';
-// import AlphaDawnDashboard from './App/components/alphaDawn/Dashboard';
+import AlphaDawnDashboard from './App/components/alphaDawn/Dashboard';
 
+// override settings for basic theme.
+// material-ui uses JSS so every component that uses it may have a similar object to control how things look
 const theme = createMuiTheme({
   palette: {
     primary: purple,
@@ -37,18 +39,21 @@ const theme = createMuiTheme({
   }
 });
 
-// console.log(theme);
-
 class App extends Component {
   render() {
     return (
+      // context provider
       <Provider>
+        {/* theme provider for material-ui */}
         <MuiThemeProvider theme={theme}>
+          {/* router */}
           <BrowserRouter>
+            {/* context comsumer */}
             <Consumer>
               {value => {
                 return (
                   <React.Fragment>
+                    {/* switch for route table */}
                     <Switch>
                       <Route exact path="/" component={SignIn} />
                       <Route exact path="/home" component={Home} />
@@ -57,11 +62,11 @@ class App extends Component {
                         path="/knighthawks/dashboard"
                         component={KnightHawksDashboard}
                       />
-                      {/* <Route
+                      <Route
                         exact
                         path="/alphadawn/dashboard"
                         component={AlphaDawnDashboard}
-                      /> */}
+                      />
                       {/* 404 */}
                       <Route component={NotFound} />
                     </Switch>
