@@ -28,7 +28,7 @@ function CreatedInformation(props) {
           <Tooltip title="Date Created" placement="top-start">
             <Typography variant="caption" gutterBottom>
               <span className={classes.secondaryDarkText}>created on:</span>{' '}
-              {Date(props.createdOn)}
+              {props.createdOn}
             </Typography>
           </Tooltip>
           <Tooltip title="Person That Created Record" placement="top-start">
@@ -43,7 +43,7 @@ function CreatedInformation(props) {
           <Tooltip title="Date Last Modified" placement="top-start">
             <Typography variant="caption" gutterBottom>
               <span className={classes.secondaryDarkText}>modified on:</span>{' '}
-              {Date(props.modifiedOn)}
+              {props.modifiedOn}
             </Typography>
           </Tooltip>
           <Tooltip title="Person That Modified Record" placement="top-start">

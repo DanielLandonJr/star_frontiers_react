@@ -90,7 +90,7 @@ class HullDetails extends Component {
     }
   };
 
-  componentWillMount() {
+  componentDidMount() {
     const { incomingHullData } = this.props;
 
     // set state with incoming props
@@ -120,6 +120,71 @@ class HullDetails extends Component {
       this.state.CreateHash();
     }
   }
+
+  componentDidUpdate = prevProps => {
+    // i dont like this...there has to be a better way
+    const { incomingHullData } = this.props;
+
+    if (incomingHullData.id !== prevProps.incomingHullData.id) {
+      this.setState({ id: incomingHullData.id });
+    }
+
+    if (incomingHullData.length !== prevProps.incomingHullData.length) {
+      this.setState({ length: incomingHullData.length });
+    }
+
+    if (incomingHullData.diameter !== prevProps.incomingHullData.diameter) {
+      this.setState({ diameter: incomingHullData.diameter });
+    }
+
+    if (incomingHullData.hatches !== prevProps.incomingHullData.hatches) {
+      this.setState({ hatches: incomingHullData.hatches });
+    }
+
+    if (incomingHullData.engines !== prevProps.incomingHullData.engines) {
+      this.setState({ engines: incomingHullData.engines });
+    }
+
+    if (incomingHullData.adf !== prevProps.incomingHullData.adf) {
+      this.setState({ adf: incomingHullData.adf });
+    }
+
+    if (incomingHullData.mr !== prevProps.incomingHullData.mr) {
+      this.setState({ mr: incomingHullData.mr });
+    }
+
+    if (incomingHullData.infoText !== prevProps.incomingHullData.infoText) {
+      this.setState({ infoText: incomingHullData.infoText });
+    }
+
+    if (incomingHullData.createdOn !== prevProps.incomingHullData.createdOn) {
+      this.setState({ createdOn: incomingHullData.createdOn });
+    }
+
+    if (incomingHullData.createdBy !== prevProps.incomingHullData.createdBy) {
+      this.setState({ createdBy: incomingHullData.createdBy });
+    }
+
+    if (incomingHullData.modifiedOn !== prevProps.incomingHullData.modifiedOn) {
+      this.setState({ modifiedOn: incomingHullData.modifiedOn });
+    }
+
+    if (incomingHullData.modifiedBy !== prevProps.incomingHullData.modifiedBy) {
+      this.setState({ modifiedBy: incomingHullData.modifiedBy });
+    }
+
+    if (incomingHullData.admin !== prevProps.incomingHullData.admin) {
+      this.setState({ admin: incomingHullData.admin });
+    }
+
+    if (incomingHullData.hash !== prevProps.incomingHullData.hash) {
+      this.setState({ hash: incomingHullData.hash });
+    }
+
+    if (incomingHullData.type !== prevProps.incomingHullData.type) {
+      this.setState({ type: incomingHullData.type });
+    }
+  };
 
   // is the panel expanded or not...this panel should force another panel to close when this one opens ... have to figure out how to get this to work
   handleChange = panel => (event, expanded) => {
@@ -222,7 +287,7 @@ class HullDetails extends Component {
 
               <Grid item xs={12} sm={6}>
                 <Tooltip
-                  title="Setting value other than &quot;0&quot; will mark this as a completed record."
+                  title='Setting value other than "0" will mark this as a completed record.'
                   placement="top-start"
                 >
                   <TextField

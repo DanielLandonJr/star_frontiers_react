@@ -48,19 +48,12 @@ class Hulls extends React.Component {
                 }));
                 break;
               case 'modified':
-                // this is not working...database is being updated properly but i cant seem to get the spread operator to updagte my local state. this is not a probelm at this time as this only comes in if someone else is making data changes at the same time...you wont get the push but a refresh will show the changes
-                console.log('modified');
-                // filter out data to be removed
-                // this.setState({
-                //   hullData: this.state.hullData.filter(
-                //     hull => hull.id !== change.doc.id
-                //   )
-                // });
-
-                // add new data to the state
-                // this.setState(state => ({
-                //   hullData: [...state.hullData, newData]
-                // }));
+                this.setState(state => ({
+                  hullData: [
+                    ...state.hullData.filter(item => item.id !== change.doc.id),
+                    change.doc.data()
+                  ]
+                }));
                 break;
               case 'removed':
                 // filter out record and reset the state
