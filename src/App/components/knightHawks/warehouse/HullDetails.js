@@ -53,9 +53,12 @@ const styles = theme => ({
 
 class HullDetails extends Component {
   state = {
+    oldHash: '',
+    changesPending: false,
+    disabled: false,
     expanded: null,
     panelNumber: '',
-    disabled: true,
+    // ths actual data from props
     id: 0,
     length: 0,
     diameter: 0,
@@ -73,7 +76,7 @@ class HullDetails extends Component {
     type: 0,
     CreateHash: () => {
       // this creates a hash out of the complete record
-      const whatToHash = `${this.state.id}, ${this.state.length}, ${
+      const stringToHash = `${this.state.id}, ${this.state.length}, ${
         this.state.diameter
       }, ${this.state.hatches}, ${this.state.engines}, ${this.state.adf}, ${
         this.state.mr
@@ -83,8 +86,16 @@ class HullDetails extends Component {
         this.state.admin
       }, ${this.state.type}`;
 
+      var myBuffer = [];
+      var buffer = new Buffer(stringToHash, 'utf16le');
+      for (var i = 0; i < buffer.length; i++) {
+        myBuffer.push(buffer[i]);
+      }
+
+      myBuffer = myBuffer.toString();
+
       const salt = bcrypt.genSaltSync(10);
-      const newHash = bcrypt.hashSync(whatToHash, salt);
+      const newHash = bcrypt.hashSync(myBuffer, salt);
 
       this.setState({ hash: newHash });
     }
@@ -119,6 +130,9 @@ class HullDetails extends Component {
       // no hash found so create one
       this.state.CreateHash();
     }
+
+    // set the oldHas to what the current has isFinite...we will be checking against the old hash for changes
+    this.setState({ oldHash: this.state.hash });
   }
 
   componentDidUpdate = prevProps => {
@@ -197,6 +211,12 @@ class HullDetails extends Component {
     this.setState({ [event.target.name]: event.target.value });
     // create a new hash with every key press ... need to come up with a better solution
     this.state.CreateHash();
+
+    if (this.state.oldHash !== this.state.hash) {
+      this.setState({ changesPending: true });
+    } else {
+      this.setState({ changesPending: false });
+    }
   };
 
   DeleteRecord = () => {
@@ -252,9 +272,9 @@ class HullDetails extends Component {
 
               <Grid item xs={12} sm={4}>
                 {/* if type = 0 then this is a new record or one that has been marked for mdoification....show a message */}
-                {this.state.type === 0 ? (
+                {this.state.changesPending && !this.state.disabled ? (
                   <Typography className={classes.secondaryHeading}>
-                    NEW RECORD ... Open and Modify
+                    Modified ... Dont Forget To Save
                   </Typography>
                 ) : null}
                 {/* record is disabled by admin flag in database....show a message */}
@@ -446,7 +466,11 @@ class HullDetails extends Component {
                   size="small"
                   color="secondary"
                   className={classes.button}
-                  disabled={this.state.disabled}
+                  disabled={
+                    this.state.changesPending && !this.state.disabled
+                      ? false
+                      : true
+                  }
                   onClick={this.UpdateRecord}
                 >
                   <SaveIcon
